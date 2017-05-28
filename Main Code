@@ -1,1 +1,75 @@
+namespace Learning
 
+{
+	public class Program
+	{
+		static void Main(string[] args)
+		{
+			Employee Stephen = new Employee();
+
+			Stephen.EmployeeSalary = 20000;
+			Stephen.YearsOfSerice = 2;
+			Stephen.SetRating(Employee.Rating.good);
+
+			Stephen.NewEmployeeSalary();
+
+
+		}
+
+		public class Employee
+		{
+
+			public double EmployeeSalary
+			{
+				get;
+				set;
+			}
+			public int YearsOfSerice
+			{
+				get;
+				set;
+			}
+
+			public enum Rating
+			{
+				poor,
+				good,
+				excellent,
+
+			}
+		
+
+			private Rating rating;
+
+			public void SetRating(Rating rating)
+			{
+				this.rating = rating;
+			}
+
+			public void NewEmployeeSalary()
+			{
+				double income = EmployeeSalary *= 1.05;
+				int bounus = YearsOfSerice * 1000;
+				double totalEmployeeIncome = income + bounus;
+
+				switch(rating)
+				{
+					case Rating.poor:
+						bounus = YearsOfSerice -= 2000;
+						break;
+					case Rating.good:
+						break;
+					case Rating.excellent:
+						bounus = YearsOfSerice *= 2000;
+						break;
+				}
+
+				Console.WriteLine(" New Revised salary of the employee is: $" + totalEmployeeIncome);
+			}
+
+
+
+		}
+
+	}
+}

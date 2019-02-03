@@ -1,0 +1,65 @@
+using System;
+
+namespace Treehouse
+{
+class Program
+{
+    static void Main()
+    {
+      
+      
+//Prepare - This is where we understand and diagnose the problem.
+//Plan - This is where we organize everything before acting.
+//Perform - We simply put the plan into action.
+//Perfect - This is when we check to see if what we made has solved the problem and consider how to make it better. We can use the Four P's again to make improvements.
+        
+      int runningTotal = 0;
+      bool keepGoing = true;
+      
+      // running total for a cycling app
+
+        while(keepGoing) {
+          
+          Console.Write("Enter how many minutes you excercised or type \"quit\": ");
+          string entry = Console.ReadLine();
+          if (entry == "quit")
+          {       
+            keepGoing = false;
+          }
+          else{
+ 
+            int minutes = int.Parse(entry);
+
+            if(minutes <= 0){
+              Console.WriteLine(minutes + " is not an acceptable value");
+              continue;
+            }
+              
+            else if(minutes <= 10){
+               Console.WriteLine("Better nothing, am I right?");
+             }
+            else if (minutes <= 30){
+               Console.WriteLine("Way to go hot stuff");
+            }
+            else if (minutes <= 60){
+               Console.WriteLine("You must be a warrior Ninja");
+            }
+            else {
+               Console.WriteLine("Now your just showing off");
+              
+            }
+            runningTotal =+ minutes;           
+            Console.WriteLine("You have entered " + entry + " so far !!");
+          }
+          
+        }
+      
+
+      
+      Console.WriteLine("Goodbye");
+      
+      // this input is added to the app and then desplays the total time to the use
+      
+    }
+}
+}

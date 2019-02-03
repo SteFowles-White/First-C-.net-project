@@ -13,43 +13,48 @@ class Program
 //Perform - We simply put the plan into action.
 //Perfect - This is when we check to see if what we made has solved the problem and consider how to make it better. We can use the Four P's again to make improvements.
         
-      int runningTotal = 0;
-      bool keepGoing = true;
+      double runningTotal = 0;
       
       // running total for a cycling app
 
-        while(keepGoing) {
+        while(true) {
           
           Console.Write("Enter how many minutes you excercised or type \"quit\": ");
           string entry = Console.ReadLine();
-          if (entry == "quit")
+          if (entry.ToLower() == "quit")
           {       
-            keepGoing = false;
+            break;
           }
           else{
- 
-            int minutes = int.Parse(entry);
+              try
+              {
+                double minutes = double.Parse(entry);
+                    if(minutes <= 0){
+                    Console.WriteLine(minutes + " is not an acceptable value");
+                    continue;
+                     }    
+                    else if(minutes <= 10){
+                       Console.WriteLine("Better nothing, am I right?");
+                     }
+                    else if (minutes <= 30){
+                       Console.WriteLine("Way to go hot stuff");
+                    }
+                    else if (minutes <= 60){
+                       Console.WriteLine("You must be a warrior Ninja");
+                    }
+                    else {
+                       Console.WriteLine("Now your just showing off");                   
+                    }
+                    runningTotal =+ minutes;     
 
-            if(minutes <= 0){
-              Console.WriteLine(minutes + " is not an acceptable value");
-              continue;
-            }
-              
-            else if(minutes <= 10){
-               Console.WriteLine("Better nothing, am I right?");
-             }
-            else if (minutes <= 30){
-               Console.WriteLine("Way to go hot stuff");
-            }
-            else if (minutes <= 60){
-               Console.WriteLine("You must be a warrior Ninja");
-            }
-            else {
-               Console.WriteLine("Now your just showing off");
-              
-            }
-            runningTotal =+ minutes;           
-            Console.WriteLine("You have entered " + entry + " so far !!");
+               
+              }
+              catch(FormatException)
+                {
+                Console.WriteLine("That is an invalid input");
+                continue;
+                }
+                    Console.WriteLine("You have entered " + entry + " so far !!");
           }
           
         }
